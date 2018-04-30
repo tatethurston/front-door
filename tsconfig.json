@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": [
+      "es2017"
+    ],
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "removeComments": true,
+    "target": "es2017"
+  }
+}

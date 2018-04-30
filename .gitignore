@@ -1,0 +1,5 @@
+dist/*
+!dist/template.yml
+yarn-error.log
+
+devserver

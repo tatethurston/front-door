@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+shopt -s nullglob globstar
+
+echo "Deploying..."
+
+(
+  cd dist
+
+  cp ../package.json package.json
+  NODE_ENV=production yarn install
+  # node_modules permissions
+  chmod -R a+r *
+
+  sam package \
+    --template-file template.yml \
+    --s3-bucket tate-thurston-lambda \
+    --output-template-file packaged.yaml
+
+  sam deploy \
+    --template-file packaged.yaml \
+    --stack-name front-door \
+    --capabilities CAPABILITY_IAM \
+
+  echo "Successfully deployed."
+)
+
+echo "Verifying system health..."
+
+RESULT=$(curl --silent \
+  https://8lcel1nlb7.execute-api.us-west-1.amazonaws.com/Prod/front-door)
+if echo "$RESULT" | grep "<Response>"; then
+ echo "Status: OK"
+else
+ echo "Status: FAIL"
+fi
