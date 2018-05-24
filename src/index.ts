@@ -32,7 +32,7 @@ export const handler = async () => {
       body: `
         <?xml version="1.0" encoding="UTF-8"?>
         <Response> <Dial> +16505764285 </Dial> </Response>
-      `
+      `.trim()
     };
   }
 
@@ -57,6 +57,6 @@ export const handler = async () => {
         <Pause length="5"/>
         <Play digits="w9"/>
       </Response>
-    `
+    `.trim()
   };
 };

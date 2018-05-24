@@ -5,6 +5,8 @@ shopt -s nullglob globstar
 
 echo "Deploying..."
 
+tsc
+
 (
   cd dist
 
