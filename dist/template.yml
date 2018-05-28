@@ -8,16 +8,22 @@ Resources:
   FrontDoor:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
+      Handler: frontdoor.handler
       Runtime: nodejs8.10
       Events:
         Api:
           Type: Api
           Properties:
             Path: /front-door
-            Method: get
-      # Environment:
-      #  Variables:
-      #    TWILIO_SID:
-      #    TWILIO_TOKEN:
-
+            Method: GET
+  FrontDoor2:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: frontdoor2.handler
+      Runtime: nodejs8.10
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /front-door2
+            Method: POST

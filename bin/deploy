@@ -5,7 +5,7 @@ shopt -s nullglob globstar
 
 echo "Deploying..."
 
-tsc
+yarn run tsc
 
 (
   cd dist

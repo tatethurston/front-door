@@ -10,6 +10,7 @@
     "twilio": "^3.16.0"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.5",
     "@types/chai": "^4.0.10",
     "@types/lodash": "^4.14.91",
     "@types/mocha": "^2.2.44",
@@ -21,7 +22,7 @@
     "ts-node": "^4.0.2",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.6.0",
-    "typescript": "^2.6.2"
+    "typescript": "^2.8.3"
   },
   "scripts": {
     "lint": "prettier --write 'src/**/*.ts' && tslint -c tslint.json 'src/**/*.ts' --fix",
