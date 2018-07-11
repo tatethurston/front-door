@@ -30,9 +30,9 @@ export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
     body: `
       <?xml version="1.0" encoding="UTF-8"?>
       <Response>
-        <Pause length="1"/>
-        <Say>Hello. Who is it?</Say>
-        <Record timeout="2" playBeep="false" action="/Prod/front-door2"/>
+        <Gather numDigits="4" timeout="30" action="/Prod/front-door2">
+          <Say>Hello. Please enter your 4 digit security code.</Say>
+        </Gather>
       </Response>
     `.trim()
   };
