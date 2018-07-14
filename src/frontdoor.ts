@@ -1,4 +1,4 @@
-const moment = require("moment-timezone");
+import * as moment from "moment-timezone";
 
 export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
   // 8AM - 6PM

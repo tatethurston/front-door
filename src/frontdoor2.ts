@@ -5,11 +5,12 @@ const {
 } = process.env;
 
 import * as qs from 'qs';
-const twilio = require("twilio");
+import * as twilio from "twilio";
 const client = twilio(TWILIO_SID, TWILIO_TOKEN);
 
 export const handler = async (event: AWSLambda.APIGatewayProxyEvent): Promise<AWSLambda.APIGatewayProxyResult> => {
   const { Digits } = qs.parse(event.body);
+  console.log(`Received code ${Digits}`);
 
   if (Digits != ACCESS_CODE) {
      return {
@@ -17,7 +18,9 @@ export const handler = async (event: AWSLambda.APIGatewayProxyEvent): Promise<AW
        headers: { "Content-Type": "text/xml" },
        body: `
          <?xml version="1.0" encoding="UTF-8"?>
-         <Response> <Dial> +16505764285 </Dial> </Response>
+         <Response>
+           <Say>Sorry, I don't recognize that code. Please try again.</Say>
+         </Response>
        `.trim()
      };
   }
@@ -29,7 +32,7 @@ export const handler = async (event: AWSLambda.APIGatewayProxyEvent): Promise<AW
       to: "+16505764285"
     });
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 
   return {
