@@ -1,7 +1,7 @@
 import * as moment from "moment-timezone";
 
 export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
-  // 8AM - 6PM
+  // 8AM - 8PM
   const start = moment()
     .tz("America/Los_Angeles")
     .startOf("day")
@@ -9,7 +9,7 @@ export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
   const end = moment()
     .tz("America/Los_Angeles")
     .startOf("day")
-    .add(18, "hours");
+    .add(20, "hours");
   const now = moment().tz("America/Los_Angeles");
   const allowedTime = start <= now && now <= end;
 
