@@ -1,3 +1,4 @@
 # Front Door
-A simple workflow built onop of the Twilio API to enable access (via auth codes generated out of band) to a building intercom.
-Deployed via AWS Lambda.
+A simple workflow built on top the Twilio API to enable door access (via auth codes generated out of band) through a building intercom.
+
+Deployed to AWS Lambda (`bin/deploy`).
