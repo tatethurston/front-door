@@ -4,20 +4,12 @@
   "description": "Front Door",
   "main": "index.js",
   "dependencies": {
-    "lodash": "^4.17.4",
-    "moment": "^2.20.1",
-    "moment-timezone": "^0.5.17",
-    "twilio": "^3.16.0"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.5",
-    "@types/chai": "^4.0.10",
-    "@types/lodash": "^4.14.91",
-    "@types/mocha": "^2.2.44",
-    "@types/moment": "^2.13.0",
-    "@types/twilio": "^0.0.9",
-    "chai": "^4.1.2",
-    "mocha": "^4.0.1",
+    "@types/axios": "^0.14.0",
+    "@types/node": "^10.9.4",
     "prettier": "^1.9.2",
     "ts-node": "^4.0.2",
     "tslint": "^5.8.0",

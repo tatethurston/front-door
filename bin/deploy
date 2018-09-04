@@ -11,7 +11,7 @@ yarn run tsc
   cd dist
 
   cp ../package.json package.json
-  NODE_ENV=production yarn install
+  NODE_ENV=production yarn install # skip devDependencies
   # node_modules permissions
   chmod -R a+r *
 

@@ -1,17 +1,13 @@
-import * as moment from "moment-timezone";
-
 export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
+  // Pacific Time
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
+  const now = parseInt(new Date().toLocaleString("en-US", {
+    hour12: false,
+    hour: 'numeric', timeZone: "America/Los_Angeles",
+  }));
+
   // 8AM - 8PM
-  const start = moment()
-    .tz("America/Los_Angeles")
-    .startOf("day")
-    .add(8, "hours");
-  const end = moment()
-    .tz("America/Los_Angeles")
-    .startOf("day")
-    .add(20, "hours");
-  const now = moment().tz("America/Los_Angeles");
-  const allowedTime = start <= now && now <= end;
+  const allowedTime = now >= 8 && now <= 20;
 
   if (!allowedTime) {
     return {
