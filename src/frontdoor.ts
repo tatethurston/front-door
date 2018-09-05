@@ -6,8 +6,8 @@ export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
     hour: 'numeric', timeZone: "America/Los_Angeles",
   }));
 
-  // 8AM - 8PM
-  const allowedTime = now >= 8 && now <= 20;
+  // 6AM - 10PM
+  const allowedTime = now >= 6 && now <= 22;
 
   if (!allowedTime) {
     return {
