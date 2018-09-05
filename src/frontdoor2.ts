@@ -1,14 +1,14 @@
 const {
-  TWILIO_SID,
-  TWILIO_TOKEN,
-  ACCESS_CODE,
+  TWILIO_SID = "",
+  TWILIO_TOKEN = "",
+  ACCESS_CODE = "",
 } = process.env;
 
 import * as querystring from "querystring";
 import axios from "axios";
 
 export const handler = async (event: AWSLambda.APIGatewayProxyEvent): Promise<AWSLambda.APIGatewayProxyResult> => {
-  const { Digits } = querystring.parse(event.body);
+  const { Digits } = querystring.parse(event.body!);
   console.log(`Received code ${Digits}`);
 
   if (Digits != ACCESS_CODE) {

@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "src",
-    "outDir": "dist",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": false,
+    "outDir": "dist",
     "removeComments": true,
+    "rootDir": "src",
+    "sourceMap": false,
+    "strict": true,
     "target": "es2017"
   }
 }

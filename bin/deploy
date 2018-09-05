@@ -3,10 +3,13 @@
 set -euo pipefail
 shopt -s nullglob globstar
 
+S3_LAMBDA=tate-thurston-lambda
+NAME=front-door
+URL=https://8lcel1nlb7.execute-api.us-west-1.amazonaws.com/Prod/front-door
+
 echo "Deploying..."
 
 yarn run tsc
-
 (
   cd dist
 
@@ -17,12 +20,12 @@ yarn run tsc
 
   sam package \
     --template-file template.yml \
-    --s3-bucket tate-thurston-lambda \
+    --s3-bucket "$S3_LAMBDA" \
     --output-template-file packaged.yaml
 
   sam deploy \
     --template-file packaged.yaml \
-    --stack-name front-door \
+    --stack-name "$NAME" \
     --capabilities CAPABILITY_IAM \
 
   echo "Successfully deployed."
@@ -30,8 +33,7 @@ yarn run tsc
 
 echo "Verifying system health..."
 
-RESULT=$(curl --silent \
-  https://8lcel1nlb7.execute-api.us-west-1.amazonaws.com/Prod/front-door)
+RESULT=$(curl --silent "$URL")
 if echo "$RESULT" | grep "<Response>"; then
  echo "Status: OK"
 else
