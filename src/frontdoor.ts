@@ -1,4 +1,9 @@
+const {
+  DISABLE_TIME_CHECK = "",
+} = process.env;
+
 export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
+  const timeCheckEnabled = DISABLE_TIME_CHECK == "";
   // Pacific Time
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
   const now = parseInt(new Date().toLocaleString("en-US", {
@@ -9,7 +14,7 @@ export const handler = async (): Promise<AWSLambda.APIGatewayProxyResult> => {
   // 6AM - 10PM
   const allowedTime = now >= 6 && now <= 22;
 
-  if (!allowedTime) {
+  if (timeCheckEnabled && !allowedTime) {
     return {
       statusCode: 200,
       headers: { "Content-Type": "text/xml" },
